@@ -52,17 +52,17 @@
             animation: slide 60s linear infinite;
         }
         .slider-img {
-            width: 250px;
-            height: 200px;
+            width: 250px; /* Lebar gambar 4x */
+            height: 313px; /* Tinggi gambar 5x (250 / 4 * 5) */
             object-fit: cover;
             margin: 0 10px;
             border-radius: 0.75rem;
             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            filter: grayscale(100%);
+            /* filter: grayscale(100%); Dihapus agar gambar berwarna */
             transition: all 0.3s ease-in-out;
         }
         .slider-img:hover {
-            filter: grayscale(0%);
+            /* filter: grayscale(0%); Baris ini tidak lagi diperlukan tetapi dibiarkan */
             transform: scale(1.05);
         }
         .slider-container:hover .slider-track {
