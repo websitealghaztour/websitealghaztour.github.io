@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri Foto - Alghaz Tour</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: { // Merah Marun Palette
+                            '50': '#fff1f2',
+                            '100': '#ffe4e6',
+                            '200': '#fecdd3',
+                            '300': '#fda4af',
+                            '400': '#fb7185',
+                            '500': '#f43f5e',
+                            '600': '#e11d48',
+                            '700': '#be123c',
+                            '800': '#9f1239',
+                            '900': '#881337',
+                            '950': '#4c0519',
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .nav-link.active {
+            color: #be123c; /* primary-700 */
+            font-weight: 600;
+        }
+        .clickable-card, .clickable-button, .clickable-text {
+            transition: all 0.3s ease-in-out;
+        }
+        .clickable-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        .clickable-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .clickable-button:active {
+            transform: scale(0.98);
+        }
+        .clickable-text:hover {
+            color: #be123c;
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transform: translateY(50px);
+        }
+        .is-visible {
+            opacity: 1;
+            transform: none;
+        }
+    </style>
+</head>
+<body class="bg-white font-sans antialiased text-gray-800 text-base">
+
+    <!-- Header / Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="max-w-md mx-auto flex items-center justify-center bg-white/80 backdrop-blur-md rounded-full px-6 py-3 shadow-sm">
+                <div id="desktop-nav" class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link clickable-text">Beranda</a>
+                    <a href="umrah.html" class="nav-link clickable-text">Umrah</a>
+                    <a href="foto.html" class="nav-link active clickable-text">Foto</a>
+                    <a href="video.html" class="nav-link clickable-text">Video</a>
+                </div>
+                 <div class="md:hidden flex-1 flex justify-center">
+                     <a href="index.html" class="text-lg font-bold text-primary-800">Alghaz Tour</a>
+                </div>
+                <div class="md:hidden flex-1 flex justify-end">
+                    <button id="mobile-menu-button" class="text-gray-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-md mt-2 max-w-md mx-auto rounded-lg shadow-lg">
+            <a href="index.html" class="nav-link block px-6 py-3 text-gray-600 hover:bg-primary-50">Beranda</a>
+            <a href="umrah.html" class="nav-link block px-6 py-3 text-gray-600 hover:bg-primary-50">Umrah</a>
+            <a href="foto.html" class="nav-link block px-6 py-3 text-gray-600 hover:bg-primary-50 active">Foto</a>
+            <a href="video.html" class="nav-link block px-6 py-3 text-gray-600 hover:bg-primary-50">Video</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Halaman Foto -->
+        <div class="container mx-auto px-6 py-32 animate-on-scroll">
+            <div class="text-center max-w-3xl mx-auto">
+                <h1 class="text-4xl md:text-5xl font-bold text-primary-900">Galeri Foto</h1>
+                <p class="mt-4 text-lg text-gray-600">Momen tak terlupakan dari perjalanan ibadah bersama kami.</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 mt-16">
+                <img src="https://images.unsplash.com/photo-1583913469133-4f7f1352193a?q=80&w=800&auto=format&fit=crop" alt="[Foto Ka'bah]" class="aspect-video object-cover rounded-lg shadow-md clickable-card animate-on-scroll">
+                <img src="https://images.unsplash.com/photo-1563890424397-83278783049b?q=80&w=800&auto=format&fit=crop" alt="[Foto Masjid Nabawi]" class="aspect-video object-cover rounded-lg shadow-md clickable-card animate-on-scroll">
+                <img src="https://images.unsplash.com/photo-1610452382151-235b33979922?q=80&w=800&auto=format&fit=crop" alt="[Foto jamaah]" class="aspect-video object-cover rounded-lg shadow-md clickable-card animate-on-scroll">
+                <img src="https://images.unsplash.com/photo-1591128476394-345f0414336c?q=80&w=800&auto=format&fit=crop" alt="[Foto menara jam Mekah]" class="aspect-video object-cover rounded-lg shadow-md clickable-card animate-on-scroll">
+                <img src="https://images.unsplash.com/photo-1593436384832-5f3853755953?q=80&w=800&auto=format&fit=crop" alt="[Foto pintu Ka'bah]" class="aspect-video object-cover rounded-lg shadow-md clickable-card animate-on-scroll">
+                <img src="https://images.unsplash.com/photo-1555899129-a9a3c613a4e6?q=80&w=800&auto=format&fit=crop" alt="[Foto jamaah berdoa]" class="aspect-video object-cover rounded-lg shadow-md clickable-card animate-on-scroll">
+                <img src="https://images.unsplash.com/photo-1532614343214-a845940a8434?q=80&w=800&auto=format&fit=crop" alt="[Foto payung Masjid Nabawi]" class="aspect-video object-cover rounded-lg shadow-md clickable-card animate-on-scroll">
+                <img src="https://images.unsplash.com/photo-1588481355018-3944351652f7?q=80&w=800&auto=format&fit=crop" alt="[Foto interior masjid]" class="aspect-video object-cover rounded-lg shadow-md clickable-card animate-on-scroll">
+                <img src="https://images.unsplash.com/photo-1568495162349-d89c35a69335?q=80&w=800&auto=format&fit=crop" alt="[Foto kamar hotel]" class="aspect-video object-cover rounded-lg shadow-md clickable-card animate-on-scroll">
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-12">
+            <div class="flex flex-col md:flex-row justify-center items-center md:items-start gap-10 md:gap-20 text-center md:text-left">
+                <!-- Alamat Section -->
+                <div>
+                    <h4 class="text-lg font-semibold text-primary-600 uppercase tracking-wider">Alamat</h4>
+                    <div class="mt-4">
+                        <a href="#" class="inline-flex items-start text-gray-300 hover:text-white transition-colors max-w-xs clickable-text">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin mt-1 flex-shrink-0"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <span class="ml-3 text-sm">Wisma Permata Jl. Darul Hikmah No. 20d Kecamatan Labuapi, Kabupaten Lombok Barat, NTB (83361)</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- Sosial Section -->
+                <div>
+                    <h4 class="text-lg font-semibold text-primary-600 uppercase tracking-wider">Sosial</h4>
+                    <div class="mt-4 space-y-3">
+                        <a href="mailto:alghazhajadi@gmail.com" class="flex items-center justify-center md:justify-start text-gray-300 hover:text-white transition-colors clickable-text">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                            <span class="ml-3 text-sm">alghazhajadi@gmail.com</span>
+                        </a>
+                        <a href="#" class="flex items-center justify-center md:justify-start text-gray-300 hover:text-white transition-colors clickable-text">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                            <span class="ml-3 text-sm">@alghaz.tour</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-700 pt-8 text-center text-sm text-gray-400">
+                <p>&copy; 2025 PT. Alghaz Hajadi Indowisata</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Animation on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
+            elementsToAnimate.forEach(el => {
+                observer.observe(el);
+            });
+            // Trigger animation for content already in view
+            setTimeout(() => {
+                elementsToAnimate.forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                        el.classList.add('is-visible');
+                    }
+                });
+            }, 100);
+        });
+    </script>
+</body>
+</html>
