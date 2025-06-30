@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alghaz Tour - Pilihan Terbaik untuk Umrah dan Wisata Iman</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: { // Merah Marun Palette
+                            '50': '#fff1f2',
+                            '100': '#ffe4e6',
+                            '200': '#fecdd3',
+                            '300': '#fda4af',
+                            '400': '#fb7185',
+                            '500': '#f43f5e',
+                            '600': '#e11d48',
+                            '700': '#be123c',
+                            '800': '#9f1239',
+                            '900': '#881337',
+                            '950': '#4c0519',
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Typing animation cursor */
+        .typing-cursor::after {
+            content: '|';
+            font-weight: 300;
+            animation: blink 0.7s infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+        
+        /* Image Slider Animation */
+        .slider-track {
+            display: flex;
+            width: calc(270px * 18);  
+            animation: slide 60s linear infinite;
+        }
+        .slider-img {
+            width: 250px;
+            height: 200px;
+            object-fit: cover;
+            margin: 0 10px;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            filter: grayscale(100%);
+            transition: all 0.3s ease-in-out;
+        }
+        .slider-img:hover {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+        }
+        .slider-container:hover .slider-track {
+            animation-play-state: paused;
+        }
+
+        @keyframes slide {
+            from { transform: translateX(0); }
+            to { transform: translateX(calc(-270px * 9)); }  
+        }
+
+        /* Active link style */
+        .nav-link.active {
+            color: #be123c; /* primary-700 */
+            font-weight: 600;
+        }
+        
+        /* General Hover & Transition */
+        .clickable-card, .clickable-button, .clickable-text {
+            transition: all 0.3s ease-in-out;
+        }
+        .clickable-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        .clickable-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .clickable-button:active {
+            transform: scale(0.98);
+        }
+        .clickable-text:hover {
+            color: #be123c;
+        }
+        
+        /* Scroll Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .animate-fade-in-up {
+            transform: translateY(50px);
+        }
+        .animate-fade-in-left {
+            transform: translateX(-50px);
+        }
+        .animate-fade-in-right {
+            transform: translateX(50px);
+        }
+        .is-visible {
+            opacity: 1;
+            transform: none;
+        }
+    </style>
+</head>
+<body class="bg-white font-sans antialiased text-gray-800 text-base">
+
+    <!-- Header / Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="max-w-md mx-auto flex items-center justify-center bg-white/80 backdrop-blur-md rounded-full px-6 py-3 shadow-sm">
+                <div id="desktop-nav" class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link active clickable-text">Beranda</a>
+                    <a href="umrah.html" class="nav-link clickable-text">Umrah</a>
+                    <a href="foto.html" class="nav-link clickable-text">Foto</a>
+                    <a href="video.html" class="nav-link clickable-text">Video</a>
+                </div>
+                <div class="md:hidden flex-1 flex justify-center">
+                     <a href="index.html" class="text-lg font-bold text-primary-800">Alghaz Tour</a>
+                </div>
+                <div class="md:hidden flex-1 flex justify-end">
+                    <button id="mobile-menu-button" class="text-gray-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-md mt-2 max-w-md mx-auto rounded-lg shadow-lg">
+            <a href="index.html" class="nav-link block px-6 py-3 text-gray-600 hover:bg-primary-50 active">Beranda</a>
+            <a href="umrah.html" class="nav-link block px-6 py-3 text-gray-600 hover:bg-primary-50">Umrah</a>
+            <a href="foto.html" class="nav-link block px-6 py-3 text-gray-600 hover:bg-primary-50">Foto</a>
+            <a href="video.html" class="nav-link block px-6 py-3 text-gray-600 hover:bg-primary-50">Video</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative h-screen flex items-center justify-center text-white overflow-hidden">
+            <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExY2h1NmNvZHp0dWlpZTdzZWxzMG90dHNkcW5rdGoxeDF0MmhndjBkMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/fLma9W1iZIQrS/giphy.gif" alt="[Animasi Ka'bah]" class="absolute z-0 w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/75 z-10"></div>
+            <div class="relative z-20 flex flex-col items-center text-center px-4">
+                <img src="https://images.unsplash.com/photo-1532614343214-a845940a8434?q=80&w=2832&auto=format&fit=crop" 
+                     alt="[Gambar Masjid Nabawi dengan payung terbuka]" 
+                     class="w-1/2 md:w-1/3 lg:w-1/4 rounded-2xl shadow-2xl mb-8"
+                     onerror="this.onerror=null;this.src='https://placehold.co/600x400/FFFFFF/000000?text=Gambar+Masjid';">
+                <div class="text-3xl md:text-4xl font-semibold h-12">
+                    <span id="typing-text" class="typing-cursor"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Image Slider Section -->
+        <section class="py-12 bg-white animate-on-scroll">
+            <div class="w-full overflow-hidden relative slider-container">
+                <div class="flex slider-track">
+                    <!-- Images repeated for seamless loop -->
+                    <img src="https://images.unsplash.com/photo-1593436384832-5f3853755953?q=80&w=800&auto=format&fit=crop" alt="[Gambar detail pintu Ka'bah]" class="slider-img">
+                    <img src="https://images.unsplash.com/photo-1563890424397-83278783049b?q=80&w=800&auto=format&fit=crop" alt="[Gambar Masjid Nabawi]" class="slider-img">
+                    <img src="https://images.unsplash.com/photo-1555899129-a9a3c613a4e6?q=80&w=800&auto=format&fit=crop" alt="[Gambar jamaah sedang berdoa]" class="slider-img">
+                    <img src="https://images.unsplash.com/photo-1588481355018-3944351652f7?q=80&w=800&auto=format&fit=crop" alt="[Gambar interior masjid yang megah]" class="slider-img">
+                    <img src="https://images.unsplash.com/photo-1568495162349-d89c35a69335?q=80&w=800&auto=format&fit=crop" alt="[Gambar kamar hotel mewah]" class="slider-img">
+                    <img src="https://images.unsplash.com/photo-1544621099-a3162b242b5c?q=80&w=800&auto=format&fit=crop" alt="[Gambar kabin pesawat]" class="slider-img">
+                    <img src="https://images.unsplash.com/photo-1591128476394-345f0414336c?q=80&w=800&auto=format&fit=crop" alt="[Gambar jam di menara Mekah]" class="slider-img">
+                    <img src="https://images.unsplash.com/photo-1604754742629-0eecd3f19f14?q=80&w=800&auto=format&fit=crop" alt="[Gambar ustadz sedang membimbing]" class="slider-img">
+                    <img src="https://images.unsplash.com/photo-1610452382151-235b33979922?q=80&w=800&auto=format&fit=crop" alt="[Gambar jamaah di depan Ka'bah]" class="slider-img">
+                    <img src="https://images.unsplash.com/photo-1593436384832-5f3853755953?q=80&w=800&auto=format&fit=crop" alt="[Gambar detail pintu Ka'bah]" class="slider-img">
+                    <img src="https://images.unsplash.com/photo-1563890424397-83278783049b?q=80&w=800&auto=format&fit=crop" alt="[Gambar Masjid Nabawi]" class="slider-img">
+                    <img src="https://images.unsplash.com/photo-1555899129-a9a3c613a4e6?q=80&w=800&auto=format&fit=crop" alt="[Gambar jamaah sedang berdoa]" class="slider-img">
+                    <img src="https://images.unsplash.com/photo-1588481355018-3944351652f7?q=80&w=800&auto=format&fit=crop" alt="[Gambar interior masjid yang megah]" class="slider-img">
+                    <img src="https://images.unsplash.com/photo-1568495162349-d89c35a69335?q=80&w=800&auto=format&fit=crop" alt="[Gambar kamar hotel mewah]" class="slider-img">
+                    <img src="https://images.unsplash.com/photo-1544621099-a3162b242b5c?q=80&w=800&auto=format&fit=crop" alt="[Gambar kabin pesawat]" class="slider-img">
+                    <img src="https://images.unsplash.com/photo-1591128476394-345f0414336c?q=80&w=800&auto=format&fit=crop" alt="[Gambar jam di menara Mekah]" class="slider-img">
+                    <img src="https://images.unsplash.com/photo-1604754742629-0eecd3f19f14?q=80&w=800&auto=format&fit=crop" alt="[Gambar ustadz sedang membimbing]" class="slider-img">
+                    <img src="https://images.unsplash.com/photo-1610452382151-235b33979922?q=80&w=800&auto=format&fit=crop" alt="[Gambar jamaah di depan Ka'bah]" class="slider-img">
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section id="tentang" class="py-20 md:py-28 bg-white overflow-hidden">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto animate-on-scroll">
+                    <h2 class="text-4xl md:text-5xl font-bold text-primary-900 tracking-tight">Kenapa Kami?</h2>
+                    <p class="mt-4 text-base text-gray-600">Kami tidak hanya memberangkatkan, kami membimbing dan melayani dengan sepenuh hati untuk ibadah yang lebih khusyuk dan bermakna.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+                    <div class="text-center p-8 bg-gray-50 rounded-2xl border border-gray-200 clickable-card animate-on-scroll">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-primary-100 text-primary-700 mx-auto mb-4">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 13L2 9Z"/><path d="M12 22V9"/><path d="m3.29 9 8.71 13 8.71-13"/></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Pelayanan Premium</h3>
+                        <p class="text-sm text-gray-600">Akomodasi hotel bintang 5 dekat masjid, penerbangan langsung, dan transportasi eksekutif.</p>
+                    </div>
+                    <div class="text-center p-8 bg-gray-50 rounded-2xl border border-gray-200 clickable-card animate-on-scroll">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-primary-100 text-primary-700 mx-auto mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H2v15h7c1.7 0 3 1.3 3 3V7c0-2.2-1.8-4-4-4Z"/><path d="m16 3 6 15H9c-1.7 0-3 1.3-3 3v-1c0-2.2 1.8-4 4-4h7"/><path d="m16 12 2 2 4-4"/></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Bimbingan Intensif</h3>
+                        <p class="text-sm text-gray-600">Ustadz pembimbing berpengalaman yang siap mendampingi setiap prosesi ibadah Anda.</p>
+                    </div>
+                    <div class="text-center p-8 bg-gray-50 rounded-2xl border border-gray-200 clickable-card animate-on-scroll">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-primary-100 text-primary-700 mx-auto mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Pasti Berangkat</h3>
+                        <p class="text-sm text-gray-600">Izin resmi Kemenag, jadwal pasti, dan transparansi biaya tanpa ada tambahan tersembunyi.</p>
+                    </div>
+                     <div class="text-center p-8 bg-gray-50 rounded-2xl border border-gray-200 clickable-card animate-on-scroll">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-primary-100 text-primary-700 mx-auto mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1Z"/><path d="M14 8H8"/><path d="M16 12H8"/><path d="M12 16H8"/></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Transparansi Biaya</h3>
+                        <p class="text-sm text-gray-600">Tidak ada biaya tersembunyi. Semua rincian pengeluaran dijelaskan di awal secara transparan.</p>
+                    </div>
+                     <div class="text-center p-8 bg-gray-50 rounded-2xl border border-gray-200 clickable-card animate-on-scroll">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-primary-100 text-primary-700 mx-auto mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"/><path d="m3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9"/><path d="M12 3v6"/></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Perlengkapan Lengkap</h3>
+                        <p class="text-sm text-gray-600">Setiap jamaah mendapatkan koper, kain ihram, seragam, dan perlengkapan ibadah lainnya.</p>
+                    </div>
+                     <div class="text-center p-8 bg-gray-50 rounded-2xl border border-gray-200 clickable-card animate-on-scroll">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-primary-100 text-primary-700 mx-auto mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Dokumentasi Profesional</h3>
+                        <p class="text-sm text-gray-600">Abadikan momen ibadah Anda dengan layanan foto dan video eksklusif dari tim kami.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Packages Section -->
+        <section id="paket-beranda" class="py-20 md:py-28 bg-white overflow-hidden">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto animate-on-scroll">
+                    <h2 class="text-4xl md:text-5xl font-bold text-primary-900 tracking-tight">Paket Umrah</h2>
+                    <p class="mt-4 text-base text-gray-600">Pilih paket yang paling sesuai dengan kebutuhan dan kenyamanan Anda. Semua paket dirancang untuk pengalaman ibadah terbaik.</p>
+                </div>
+                <div class="mt-16 flex justify-center animate-on-scroll">
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden group ring-2 ring-primary-600 border border-gray-200 lg:max-w-sm clickable-card">
+                         <div class="relative">
+                            <img src="https://mediaim.expedia.com/destination/9/1d22d1783bd411e209158ddf83395d84.jpg" alt="[Interior hotel mewah dengan pemandangan kota]" class="h-60 w-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/333333/FFFFFF?text=Paket+Fadhilah';">
+                            <div class="absolute top-0 left-0 bg-primary-700 text-white text-xs font-bold px-4 py-2 rounded-br-lg">Paling Populer</div>
+                        </div>
+                        <div class="p-6 flex flex-col">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">Umrah VIP</h3>
+                            <p class="text-sm text-gray-500 mb-4">12 Hari</p>
+                            <p class="text-3xl font-extrabold text-primary-700 mb-4">Rp 60 Jt</p>
+                            <ul class="space-y-3 text-sm text-gray-600 mb-6 flex-grow">
+                                <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle-2 text-primary-500 mr-2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>Maden Madinah/Setaraf</li>
+                                <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle-2 text-primary-500 mr-2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>Zamzam Tower Mekkah/Setaraf </li>
+                                <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle-2 text-primary-500 mr-2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>Saudi Airlines/Setaraf</li>
+                                <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle-2 text-primary-500 mr-2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>Garuda Indonesia/Setaraf</li>
+                            </ul>
+                            <a href="umrah.html" class="w-full block text-center bg-primary-700 text-white font-semibold py-3 rounded-lg hover:bg-primary-800 clickable-button mt-auto">Cek Paket Lengkap</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Photo Gallery Section -->
+        <section id="foto-beranda" class="py-20 md:py-28 bg-white overflow-hidden">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto animate-on-scroll">
+                    <h2 class="text-4xl md:text-5xl font-bold text-primary-900 tracking-tight">Galeri Perjalanan</h2>
+                    <p class="mt-4 text-base text-gray-600">Momen-momen tak terlupakan dari perjalanan ibadah bersama kami.</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-16">
+                    <div class="group relative aspect-square overflow-hidden rounded-lg clickable-card animate-on-scroll">
+                        <img src="https://images.unsplash.com/photo-1568495162349-d89c35a69335?q=80&w=2940&auto=format&fit=crop" alt="[Kamar hotel yang mewah dan nyaman]" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/600x600/444444/FFFFFF?text=Hotel+Bintang+5';">
+                    </div>
+                     <div class="group relative aspect-square overflow-hidden rounded-lg clickable-card animate-on-scroll">
+                        <img src="https://images.unsplash.com/photo-1544621099-a3162b242b5c?q=80&w=2831&auto=format&fit=crop" alt="[Kabin pesawat kelas bisnis]" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/600x600/444444/FFFFFF?text=Penerbangan+Direct';">
+                    </div>
+                    <div class="group relative aspect-square overflow-hidden rounded-lg clickable-card animate-on-scroll">
+                        <img src="https://images.unsplash.com/photo-1605301149405-513475d823c9?q=80&w=2787&auto=format&fit=crop" alt="[Bus eksekutif yang modern]" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/600x600/444444/FFFFFF?text=Transportasi+Nyaman';">
+                    </div>
+                    <div class="group relative aspect-square overflow-hidden rounded-lg clickable-card animate-on-scroll">
+                        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=2787&auto=format&fit=crop" alt="[Sajian makanan prasmanan khas Indonesia]" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/600x600/444444/FFFFFF?text=Sajian+Kuliner';">
+                    </div>
+                    <div class="group relative aspect-square overflow-hidden rounded-lg clickable-card animate-on-scroll">
+                        <img src="https://images.unsplash.com/photo-1604754742629-0eecd3f19f14?q=80&w=2787&auto=format&fit=crop" alt="[Seorang ustadz memberikan ceramah]" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/600x600/444444/FFFFFF?text=Manasik+%26+Kajian';">
+                    </div>
+                    <div class="group relative aspect-square overflow-hidden rounded-lg clickable-card animate-on-scroll">
+                        <img src="https://images.unsplash.com/photo-1542037104-924839965b64?q=80&w=2940&auto=format&fit=crop" alt="[Perlengkapan umrah seperti koper dan kain ihram]" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/600x600/444444/FFFFFF?text=Perlengkapan+Lengkap';">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video & Testimonials Section -->
+        <section id="video-beranda" class="py-20 md:py-28 bg-white overflow-hidden">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto animate-on-scroll">
+                    <h2 class="text-4xl md:text-5xl font-bold text-primary-900 tracking-tight">Testimoni Jamaah</h2>
+                    <p class="mt-4 text-base text-gray-600">Pesan dan kesan para jamaah yang telah mempercayakan perjalanannya kepada kami.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+                    <div class="bg-gray-50 border border-gray-200 p-8 rounded-2xl clickable-card animate-on-scroll">
+                        <p class="text-base text-gray-700 mb-6">"Alhamdulillah, semua fasilitasnya luar biasa. Hotel sangat dekat dengan Masjidil Haram, jadi sangat mudah untuk shalat berjamaah. Bimbingannya juga sangat khusyuk. Terima kasih!"</p>
+                        <div class="flex items-center">
+                            <img src="https://i.pravatar.cc/48?u=1" alt="[Foto jamaah Ahmad]" class="w-12 h-12 rounded-full mr-4">
+                            <div>
+                                <p class="font-bold text-gray-900">Ahmad Fauzi</p>
+                                <p class="text-sm text-gray-500">Jamaah Umrah Fadhilah, Des 2023</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 border border-gray-200 p-8 rounded-2xl clickable-card animate-on-scroll">
+                        <p class="text-base text-gray-700 mb-6">"Ini pengalaman umrah pertama saya dan keluarga. Semuanya terasa mudah dan terorganisir dengan baik. Dari manasik sampai kepulangan, semuanya lancar. Sangat direkomendasikan."</p>
+                        <div class="flex items-center">
+                            <img src="https://i.pravatar.cc/48?u=2" alt="[Foto jamaah Siti]" class="w-12 h-12 rounded-full mr-4">
+                            <div>
+                                <p class="font-bold text-gray-900">Keluarga Ibu Siti</p>
+                                <p class="text-sm text-gray-500">Jamaah Umrah Barakah, Jan 2024</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 border border-gray-200 p-8 rounded-2xl md:col-span-2 lg:col-span-1 clickable-card animate-on-scroll">
+                        <p class="text-base text-gray-700 mb-6">"Pelayanannya benar-benar premium. Makanan enak, bus nyaman, dan ustadz pembimbingnya sangat sabar dan berilmu. Insya Allah akan berangkat lagi bersama travel ini."</p>
+                        <div class="flex items-center">
+                            <img src="https://i.pravatar.cc/48?u=3" alt="[Foto jamaah Rahmat]" class="w-12 h-12 rounded-full mr-4">
+                            <div>
+                                <p class="font-bold text-gray-900">Rahmat Hidayat</p>
+                                <p class="text-sm text-gray-500">Jamaah Umrah Sakinah, Feb 2024</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA / Contact Section -->
+        <section id="kontak" class="py-20 md:py-32 bg-white overflow-hidden">
+             <div class="container mx-auto px-6 text-center">
+                 <div class="max-w-4xl mx-auto animate-on-scroll">
+                    <h2 class="text-4xl md:text-5xl font-bold text-primary-900 tracking-tight">Siap Menjadi Tamu Allah?</h2>
+                    <a href="https://wa.me/6282236300262" target="_blank" class="mt-12 inline-block bg-primary-700 text-white font-bold px-8 py-4 rounded-full text-lg hover:bg-primary-800 transition-all duration-300 transform clickable-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone-call inline-block mr-2 -mt-1"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        Hubungi Kami via WhatsApp
+                    </a>
+                </div>
+             </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-12">
+            <div class="flex flex-col md:flex-row justify-center items-center md:items-start gap-10 md:gap-20 text-center md:text-left">
+                <!-- Alamat Section -->
+                <div>
+                    <h4 class="text-lg font-semibold text-primary-600 uppercase tracking-wider">Alamat</h4>
+                    <div class="mt-4">
+                        <a href="#" class="inline-flex items-start text-gray-300 hover:text-white transition-colors max-w-xs clickable-text">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin mt-1 flex-shrink-0"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <span class="ml-3 text-sm">Wisma Permata Jl. Darul Hikmah No. 20d Kecamatan Labuapi, Kabupaten Lombok Barat, NTB (83361)</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- Sosial Section -->
+                <div>
+                    <h4 class="text-lg font-semibold text-primary-600 uppercase tracking-wider">Sosial</h4>
+                    <div class="mt-4 space-y-3">
+                        <a href="mailto:alghazhajadi@gmail.com" class="flex items-center justify-center md:justify-start text-gray-300 hover:text-white transition-colors clickable-text">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                            <span class="ml-3 text-sm">alghazhajadi@gmail.com</span>
+                        </a>
+                        <a href="#" class="flex items-center justify-center md:justify-start text-gray-300 hover:text-white transition-colors clickable-text">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                            <span class="ml-3 text-sm">@alghaz.tour</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-700 pt-8 text-center text-sm text-gray-400">
+                <p>&copy; 2025 PT. Alghaz Hajadi Indowisata</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Typing effect
+            const typingTextElement = document.getElementById('typing-text');
+            if (typingTextElement) {
+                const texts = ["Ayo Umrah!", "Alghaz Tour!", "Pesan Sekarang!", "Booking Dulu!", "Tanya Tarif!"];
+                let textIndex = 0;
+                let charIndex = 0;
+                let isDeleting = false;
+
+                function type() {
+                    const currentText = texts[textIndex];
+                    let speed = isDeleting ? 100 : 150;
+
+                    if (isDeleting) {
+                        typingTextElement.textContent = currentText.substring(0, charIndex - 1);
+                        charIndex--;
+                    } else {
+                        typingTextElement.textContent = currentText.substring(0, charIndex + 1);
+                        charIndex++;
+                    }
+
+                    if (!isDeleting && charIndex === currentText.length) {
+                        speed = 2000;
+                        isDeleting = true;
+                    } else if (isDeleting && charIndex === 0) {
+                        isDeleting = false;
+                        textIndex = (textIndex + 1) % texts.length;
+                        speed = 500;
+                    }
+
+                    setTimeout(type, speed);
+                }
+                type();
+            }
+            
+            // Animation on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
+            const animationClasses = ['animate-fade-in-up', 'animate-fade-in-left', 'animate-fade-in-right'];
+            
+            elementsToAnimate.forEach(el => {
+                const randomClass = animationClasses[Math.floor(Math.random() * animationClasses.length)];
+                el.classList.add(randomClass);
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
