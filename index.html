@@ -81,8 +81,8 @@
             animation: slide 60s linear infinite;
         }
         .slider-img {
-            width: 250px; /* Lebar gambar 4x */
-            height: 313px; /* Tinggi gambar 5x (250 / 4 * 5) */
+            width: 250px;
+            height: 313px;
             object-fit: cover;
             margin: 0 10px;
             border-radius: 0.75rem;
@@ -427,23 +427,8 @@
     </footer>
 
     <script>
-        // Preloader script
-        window.addEventListener('load', function() {
-            const preloader = document.getElementById('preloader');
-            preloader.style.opacity = '0';
-            setTimeout(() => {
-                preloader.style.display = 'none';
-            }, 500); // Match transition duration
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            // Mobile menu toggle
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-            
+        // Function to initialize animations
+        function startAnimations() {
             // Typing effect
             const typingTextElement = document.getElementById('typing-text');
             if (typingTextElement) {
@@ -497,6 +482,27 @@
                 el.classList.add(randomClass);
                 observer.observe(el);
             });
+        }
+
+        // Basic setup on DOMContentLoaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        });
+
+        // Preloader and animation start on window.load
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            preloader.style.opacity = '0';
+            setTimeout(() => {
+                preloader.style.display = 'none';
+                // Start all animations after preloader is gone
+                startAnimations();
+            }, 500); // Match transition duration
         });
     </script>
 </body>
