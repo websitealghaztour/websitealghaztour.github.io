@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alghaz Tour - Pilihan Terbaik untuk Umrah dan Wisata Iman</title>
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/ikon.png" type="image/png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,6 +37,33 @@
         }
     </script>
     <style>
+        /* Preloader Styles */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease-out;
+        }
+        .loader {
+            border: 8px solid #f3f3f3; /* Light grey */
+            border-top: 8px solid #881337; /* Maroon */
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         /* Typing animation cursor */
         .typing-cursor::after {
             content: '|';
@@ -58,11 +87,9 @@
             margin: 0 10px;
             border-radius: 0.75rem;
             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            /* filter: grayscale(100%); Dihapus agar gambar berwarna */
             transition: all 0.3s ease-in-out;
         }
         .slider-img:hover {
-            /* filter: grayscale(0%); Baris ini tidak lagi diperlukan tetapi dibiarkan */
             transform: scale(1.05);
         }
         .slider-container:hover .slider-track {
@@ -120,6 +147,11 @@
     </style>
 </head>
 <body class="bg-white font-sans antialiased text-gray-800 text-base">
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
 
     <!-- Header / Navigation -->
     <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
@@ -395,6 +427,15 @@
     </footer>
 
     <script>
+        // Preloader script
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            preloader.style.opacity = '0';
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 500); // Match transition duration
+        });
+
         document.addEventListener('DOMContentLoaded', function() {
             // Mobile menu toggle
             const mobileMenuButton = document.getElementById('mobile-menu-button');
