@@ -31,7 +31,10 @@
                             '900': '#881337',
                             '950': '#4c0519',
                         },
-                    }
+                    },
+                    aspectRatio: {
+                        '4/5': '4 / 5',
+                    },
                 }
             }
         }
@@ -77,8 +80,8 @@
         /* Image Slider Animation */
         .slider-track {
             display: flex;
-            width: calc(270px * 18);  
-            animation: slide 60s linear infinite;
+            width: calc(270px * 14);  /* 7 images * 2 for loop */
+            animation: slide 40s linear infinite;
         }
         .slider-img {
             width: 250px;
@@ -98,7 +101,7 @@
 
         @keyframes slide {
             from { transform: translateX(0); }
-            to { transform: translateX(calc(-270px * 9)); }  
+            to { transform: translateX(calc(-270px * 7)); } /* Animate for 7 images */
         }
 
         /* Active link style */
@@ -184,9 +187,9 @@
             <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExY2h1NmNvZHp0dWlpZTdzZWxzMG90dHNkcW5rdGoxeDF0MmhndjBkMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/fLma9W1iZIQrS/giphy.gif" alt="[Animasi Ka'bah]" class="absolute z-0 w-full h-full object-cover">
             <div class="absolute inset-0 bg-black/75 z-10"></div>
             <div class="relative z-20 flex flex-col items-center text-center px-4">
-                <img src="assets/images/0.png" 
+                <img src="assets/images/logo.png" 
                      alt="[Gambar Masjid Nabawi dengan payung terbuka]" 
-                     class="w-1/2 md:w-1/3 lg:w-1/4 rounded-2xl shadow-2xl mb-8"
+                     class="w-3/4 md:w-1/2 lg:w-1/3 rounded-2xl shadow-2xl mb-8"
                      onerror="this.onerror=null;this.src='https://placehold.co/600x400/FFFFFF/000000?text=Gambar+Masjid';">
                 <div class="text-3xl md:text-4xl font-semibold h-12">
                     <span id="typing-text" class="typing-cursor"></span>
@@ -198,25 +201,22 @@
         <section class="py-12 bg-white animate-on-scroll">
             <div class="w-full overflow-hidden relative slider-container">
                 <div class="flex slider-track">
-                    <!-- Images repeated for seamless loop -->
-                    <img src="assets/images/1.png" alt="[Gambar detail pintu Ka'bah]" class="slider-img">
-			<img src="assets/images/2.png" alt="[Gambar detail pintu Ka'bah]" class="slider-img">
-                    <img src="assets/images/3.png" alt="[Gambar detail pintu Ka'bah]" class="slider-img">
-                    <img src="assets/images/4.png" alt="[Gambar detail pintu Ka'bah]" class="slider-img">
-                    <img src="assets/images/5.png" alt="[Gambar detail pintu Ka'bah]" class="slider-img">
-                    <img src="assets/images/6.png" alt="[Gambar detail pintu Ka'bah]" class="slider-img">
-                    <img src="assets/images/7.png" alt="[Gambar detail pintu Ka'bah]" class="slider-img">
-			<img src="assets/images/8.png" alt="[Gambar detail pintu Ka'bah]" class="slider-img">
-                    <img src="assets/images/9.png" alt="[Gambar detail pintu Ka'bah]" class="slider-img">
-                    <img src="assets/images/10.png" alt="[Gambar detail pintu Ka'bah]" class="slider-img">
-                    <img src="assets/images/11.png" alt="[Gambar detail pintu Ka'bah]" class="slider-img">
-                    <img src="assets/images/12.png" alt="[Gambar detail pintu Ka'bah]" class="slider-img">
-                    <img src="assets/images/13.png" alt="[Gambar detail pintu Ka'bah]" class="slider-img">
-			<img src="assets/images/14.png" alt="[Gambar detail pintu Ka'bah]" class="slider-img">
-                    <img src="assets/images/15.png" alt="[Gambar detail pintu Ka'bah]" class="slider-img">
-                    <img src="assets/images/16.png" alt="[Gambar detail pintu Ka'bah]" class="slider-img">
-                    <img src="assets/images/17.png" alt="[Gambar detail pintu Ka'bah]" class="slider-img">
-                    <img src="assets/images/18.png" alt="[Gambar detail pintu Ka'bah]" class="slider-img">
+                    <!-- 7 images, repeated for seamless loop -->
+                    <img src="assets/images/h1.png" alt="[Gambar suasana Masjidil Haram]" class="slider-img">
+                    <img src="assets/images/h2.png" alt="[Gambar jamaah di depan Ka'bah]" class="slider-img">
+                    <img src="assets/images/h3.png" alt="[Gambar detail arsitektur Masjid Nabawi]" class="slider-img">
+                    <img src="assets/images/h4.png" alt="[Gambar payung Masjid Nabawi terbuka]" class="slider-img">
+                    <img src="assets/images/h5.png" alt="[Gambar jamaah sedang berdoa]" class="slider-img">
+                    <img src="assets/images/h6.png" alt="[Gambar pemandangan kota Madinah]" class="slider-img">
+                    <img src="assets/images/h7.png" alt="[Gambar detail pintu Ka'bah]" class="slider-img">
+                    <!-- Duplicates for loop -->
+                    <img src="assets/images/h1.png" alt="[Gambar suasana Masjidil Haram]" class="slider-img">
+                    <img src="assets/images/h2.png" alt="[Gambar jamaah di depan Ka'bah]" class="slider-img">
+                    <img src="assets/images/h3.png" alt="[Gambar detail arsitektur Masjid Nabawi]" class="slider-img">
+                    <img src="assets/images/h4.png" alt="[Gambar payung Masjid Nabawi terbuka]" class="slider-img">
+                    <img src="assets/images/h5.png" alt="[Gambar jamaah sedang berdoa]" class="slider-img">
+                    <img src="assets/images/h6.png" alt="[Gambar pemandangan kota Madinah]" class="slider-img">
+                    <img src="assets/images/h7.png" alt="[Gambar detail pintu Ka'bah]" class="slider-img">
                 </div>
             </div>
         </section>
@@ -313,65 +313,32 @@
                     <p class="mt-4 text-base text-gray-600">Momen-momen tak terlupakan dari perjalanan ibadah bersama kami.</p>
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-16">
-                    <div class="group relative aspect-square overflow-hidden rounded-lg clickable-card animate-on-scroll">
-                        <img src="https://images.unsplash.com/photo-1568495162349-d89c35a69335?q=80&w=2940&auto=format&fit=crop" alt="[Kamar hotel yang mewah dan nyaman]" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/600x600/444444/FFFFFF?text=Hotel+Bintang+5';">
+                    <div class="group relative aspect-[4/5] overflow-hidden rounded-lg clickable-card animate-on-scroll">
+                        <img src="assets/images/p1.png" alt="[Kamar hotel yang mewah dan nyaman]" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/400x500/444444/FFFFFF?text=Hotel+Bintang+5';">
                     </div>
-                     <div class="group relative aspect-square overflow-hidden rounded-lg clickable-card animate-on-scroll">
-                        <img src="https://images.unsplash.com/photo-1544621099-a3162b242b5c?q=80&w=2831&auto=format&fit=crop" alt="[Kabin pesawat kelas bisnis]" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/600x600/444444/FFFFFF?text=Penerbangan+Direct';">
+                     <div class="group relative aspect-[4/5] overflow-hidden rounded-lg clickable-card animate-on-scroll">
+                        <img src="assets/images/p2.png" alt="[Kabin pesawat kelas bisnis]" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/400x500/444444/FFFFFF?text=Penerbangan+Direct';">
                     </div>
-                    <div class="group relative aspect-square overflow-hidden rounded-lg clickable-card animate-on-scroll">
-                        <img src="https://images.unsplash.com/photo-1605301149405-513475d823c9?q=80&w=2787&auto=format&fit=crop" alt="[Bus eksekutif yang modern]" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/600x600/444444/FFFFFF?text=Transportasi+Nyaman';">
+                    <div class="group relative aspect-[4/5] overflow-hidden rounded-lg clickable-card animate-on-scroll">
+                        <img src="assets/images/p3.png" alt="[Bus eksekutif yang modern]" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/400x500/444444/FFFFFF?text=Transportasi+Nyaman';">
                     </div>
-                    <div class="group relative aspect-square overflow-hidden rounded-lg clickable-card animate-on-scroll">
-                        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=2787&auto=format&fit=crop" alt="[Sajian makanan prasmanan khas Indonesia]" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/600x600/444444/FFFFFF?text=Sajian+Kuliner';">
+                    <div class="group relative aspect-[4/5] overflow-hidden rounded-lg clickable-card animate-on-scroll">
+                        <img src="assets/images/p4.png" alt="[Sajian makanan prasmanan khas Indonesia]" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/400x500/444444/FFFFFF?text=Sajian+Kuliner';">
                     </div>
-                    <div class="group relative aspect-square overflow-hidden rounded-lg clickable-card animate-on-scroll">
-                        <img src="https://images.unsplash.com/photo-1604754742629-0eecd3f19f14?q=80&w=2787&auto=format&fit=crop" alt="[Seorang ustadz memberikan ceramah]" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/600x600/444444/FFFFFF?text=Manasik+%26+Kajian';">
+                    <div class="group relative aspect-[4/5] overflow-hidden rounded-lg clickable-card animate-on-scroll">
+                        <img src="assets/images/p5.png" alt="[Seorang ustadz memberikan ceramah]" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/400x500/444444/FFFFFF?text=Manasik+%26+Kajian';">
                     </div>
-                    <div class="group relative aspect-square overflow-hidden rounded-lg clickable-card animate-on-scroll">
-                        <img src="https://images.unsplash.com/photo-1542037104-924839965b64?q=80&w=2940&auto=format&fit=crop" alt="[Perlengkapan umrah seperti koper dan kain ihram]" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/600x600/444444/FFFFFF?text=Perlengkapan+Lengkap';">
+                    <div class="group relative aspect-[4/5] overflow-hidden rounded-lg clickable-card animate-on-scroll">
+                        <img src="assets/images/p6.png" alt="[Perlengkapan umrah seperti koper dan kain ihram]" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/400x500/444444/FFFFFF?text=Perlengkapan+Lengkap';">
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Video & Testimonials Section -->
-        <section id="video-beranda" class="py-20 md:py-28 bg-white overflow-hidden">
-            <div class="container mx-auto px-6">
-                <div class="text-center max-w-3xl mx-auto animate-on-scroll">
-                    <h2 class="text-4xl md:text-5xl font-bold text-primary-900 tracking-tight">Testimoni Jamaah</h2>
-                    <p class="mt-4 text-base text-gray-600">Pesan dan kesan para jamaah yang telah mempercayakan perjalanannya kepada kami.</p>
-                </div>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
-                    <div class="bg-gray-50 border border-gray-200 p-8 rounded-2xl clickable-card animate-on-scroll">
-                        <p class="text-base text-gray-700 mb-6">"Alhamdulillah, semua fasilitasnya luar biasa. Hotel sangat dekat dengan Masjidil Haram, jadi sangat mudah untuk shalat berjamaah. Bimbingannya juga sangat khusyuk. Terima kasih!"</p>
-                        <div class="flex items-center">
-                            <img src="https://i.pravatar.cc/48?u=1" alt="[Foto jamaah Ahmad]" class="w-12 h-12 rounded-full mr-4">
-                            <div>
-                                <p class="font-bold text-gray-900">Ahmad Fauzi</p>
-                                <p class="text-sm text-gray-500">Jamaah Umrah Fadhilah, Des 2023</p>
-                            </div>
-                        </div>
+                    <div class="group relative aspect-[4/5] overflow-hidden rounded-lg clickable-card animate-on-scroll">
+                        <img src="assets/images/p7.png" alt="[Jamaah melakukan tawaf di sekitar Ka'bah]" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/400x500/444444/FFFFFF?text=Tawaf';">
                     </div>
-                    <div class="bg-gray-50 border border-gray-200 p-8 rounded-2xl clickable-card animate-on-scroll">
-                        <p class="text-base text-gray-700 mb-6">"Ini pengalaman umrah pertama saya dan keluarga. Semuanya terasa mudah dan terorganisir dengan baik. Dari manasik sampai kepulangan, semuanya lancar. Sangat direkomendasikan."</p>
-                        <div class="flex items-center">
-                            <img src="https://i.pravatar.cc/48?u=2" alt="[Foto jamaah Siti]" class="w-12 h-12 rounded-full mr-4">
-                            <div>
-                                <p class="font-bold text-gray-900">Keluarga Ibu Siti</p>
-                                <p class="text-sm text-gray-500">Jamaah Umrah Barakah, Jan 2024</p>
-                            </div>
-                        </div>
+                    <div class="group relative aspect-[4/5] overflow-hidden rounded-lg clickable-card animate-on-scroll">
+                        <img src="assets/images/p8.png" alt="[Pemandangan Jabal Uhud]" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/400x500/444444/FFFFFF?text=Ziarah+Uhud';">
                     </div>
-                    <div class="bg-gray-50 border border-gray-200 p-8 rounded-2xl md:col-span-2 lg:col-span-1 clickable-card animate-on-scroll">
-                        <p class="text-base text-gray-700 mb-6">"Pelayanannya benar-benar premium. Makanan enak, bus nyaman, dan ustadz pembimbingnya sangat sabar dan berilmu. Insya Allah akan berangkat lagi bersama travel ini."</p>
-                        <div class="flex items-center">
-                            <img src="https://i.pravatar.cc/48?u=3" alt="[Foto jamaah Rahmat]" class="w-12 h-12 rounded-full mr-4">
-                            <div>
-                                <p class="font-bold text-gray-900">Rahmat Hidayat</p>
-                                <p class="text-sm text-gray-500">Jamaah Umrah Sakinah, Feb 2024</p>
-                            </div>
-                        </div>
+                    <div class="group relative aspect-[4/5] overflow-hidden rounded-lg clickable-card animate-on-scroll">
+                        <img src="assets/images/p9.png" alt="[Perkebunan kurma di Madinah]" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/400x500/444444/FFFFFF?text=Kebun+Kurma';">
                     </div>
                 </div>
             </div>
